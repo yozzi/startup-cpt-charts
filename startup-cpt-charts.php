@@ -8,7 +8,7 @@ Text Domain: startup-cpt-charts
 */
 
 //GitHub Plugin Updater
-function startup_reloaded_charts_updater() {
+function startup_cpt_charts_updater() {
 	include_once 'lib/updater.php';
 	//define( 'WP_GITHUB_FORCE_UPDATE', true );
 	if ( is_admin() ) {
@@ -29,10 +29,10 @@ function startup_reloaded_charts_updater() {
 	}
 }
 
-add_action( 'init', 'startup_reloaded_charts_updater' );
+add_action( 'init', 'startup_cpt_charts_updater' );
 
 //CPT
-function startup_reloaded_charts() {
+function startup_cpt_charts() {
 	$labels = array(
 		'name'                => _x( 'Charts', 'Post Type General Name', 'startup-cpt-charts' ),
 		'singular_name'       => _x( 'Chart', 'Post Type Singular Name', 'startup-cpt-charts' ),
@@ -74,18 +74,18 @@ function startup_reloaded_charts() {
 
 }
 
-add_action( 'init', 'startup_reloaded_charts', 0 );
+add_action( 'init', 'startup_cpt_charts', 0 );
 
 //Flusher les permalink à l'activation du plugin pour qu'ils fonctionnent sans mise à jour manuelle
-function startup_reloaded_charts_rewrite_flush() {
-    startup_reloaded_charts();
+function startup_cpt_charts_rewrite_flush() {
+    startup_cpt_charts();
     flush_rewrite_rules();
 }
 
-register_activation_hook( __FILE__, 'startup_reloaded_charts_rewrite_flush' );
+register_activation_hook( __FILE__, 'startup_cpt_charts_rewrite_flush' );
 
 // Capabilities
-function startup_reloaded_charts_caps() {
+function startup_cpt_charts_caps() {
 	$role_admin = get_role( 'administrator' );
 	$role_admin->add_cap( 'edit_chart' );
 	$role_admin->add_cap( 'read_chart' );
@@ -102,14 +102,14 @@ function startup_reloaded_charts_caps() {
 	$role_admin->add_cap( 'edit_published_charts' );
 }
 
-register_activation_hook( __FILE__, 'startup_reloaded_charts_caps' );
+register_activation_hook( __FILE__, 'startup_cpt_charts_caps' );
 
 // Metaboxes
-function startup_reloaded_charts_meta() {
+function startup_cpt_charts_meta() {
     require get_template_directory() . '/inc/font-awesome.php';
     
 	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_startup_reloaded_charts_';
+	$prefix = '_startup_cpt_charts_';
 
 	$cmb_box = new_cmb2_box( array(
 		'id'            => $prefix . 'metabox',
@@ -127,10 +127,10 @@ function startup_reloaded_charts_meta() {
     ) );
 }
 
-add_action( 'cmb2_admin_init', 'startup_reloaded_charts_meta' );
+add_action( 'cmb2_admin_init', 'startup_cpt_charts_meta' );
 
 // Shortcode
-function startup_reloaded_charts_shortcode( $atts ) {
+function startup_cpt_charts_shortcode( $atts ) {
 
 	// Attributes
     $atts = shortcode_atts(array(
@@ -142,5 +142,15 @@ function startup_reloaded_charts_shortcode( $atts ) {
         require get_template_directory() . '/template-parts/content-charts.php';
         return ob_get_clean();    
 }
-add_shortcode( 'charts', 'startup_reloaded_charts_shortcode' );
+add_shortcode( 'charts', 'startup_cpt_charts_shortcode' );
+
+// Enqueue scripts and styles.
+function startup_cpt_charts_scripts() {
+    wp_enqueue_style( 'startup-cpt-charts-pizza', plugins_url( '/css/pizza.min.css', __FILE__ ), array( ), false, 'all' );
+    wp_enqueue_script( 'startup-cpt-charts-pizza', plugins_url( '/js/pizza.min.js', __FILE__ ), array( ), false, 'all' );
+    wp_enqueue_script( 'startup-cpt-charts-pizza-dependencies', plugins_url( '/js/dependencies.js', __FILE__ ), array( ), false, 'all' );
+    //wp_enqueue_script( 'startup-cpt-charts-modernizr', plugins_url( '/js/modernizr.js', __FILE__ ), array( ), false, 'all' );
+}
+
+add_action( 'wp_enqueue_scripts', 'startup_cpt_charts_scripts' );
 ?>
