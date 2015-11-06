@@ -130,6 +130,14 @@ function startup_cpt_charts_meta() {
     ) );
     
     $cmb_box->add_field( array(
+        'name'             => __( 'Donut inner ratio', 'startup-cpt-charts' ),
+        'desc'             => __( 'Between 0 and 1, eg : 0.5', 'startup-cpt-charts' ),
+        'id'               => $prefix . 'ratio',
+        'default'          => '0.4',
+        'type'             => 'text'
+    ) );
+    
+    $cmb_box->add_field( array(
         'name'             => __( 'Bar graph height', 'startup-cpt-charts' ),
         'desc'             => __( 'In px', 'startup-cpt-charts' ),
         'id'               => $prefix . 'height',
