@@ -192,6 +192,7 @@ function startup_cpt_charts_shortcode( $atts ) {
         require get_template_directory() . '/template-parts/content-charts.php';
         return ob_get_clean();    
 }
+
 add_shortcode( 'charts', 'startup_cpt_charts_shortcode' );
 
 // Enqueue scripts and styles.
@@ -203,4 +204,15 @@ function startup_cpt_charts_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'startup_cpt_charts_scripts' );
+
+// Add code to footer
+function startup_cpt_charts_footer() { ?>
+    <script type="text/javascript">
+        jQuery(window).load(function() {
+            Pizza.init();
+        });
+    </script>
+<?php }
+
+add_action( 'wp_footer', 'startup_cpt_charts_footer' );
 ?>
