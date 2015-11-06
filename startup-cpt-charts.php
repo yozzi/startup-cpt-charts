@@ -54,7 +54,7 @@ function startup_cpt_charts() {
 		'label'               => __( 'charts', 'startup-cpt-charts' ),
 		'description'         => __( '', 'startup-cpt-charts' ),
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'editor', 'revisions' ),
+		'supports'            => array( 'title', 'revisions' ),
 		'hierarchical'        => true,
 		'public'              => true,
 		'show_ui'             => true,
@@ -106,25 +106,67 @@ register_activation_hook( __FILE__, 'startup_cpt_charts_caps' );
 
 // Metaboxes
 function startup_cpt_charts_meta() {
-    require get_template_directory() . '/inc/font-awesome.php';
     
 	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_startup_cpt_charts_';
 
 	$cmb_box = new_cmb2_box( array(
 		'id'            => $prefix . 'metabox',
-		'title'         => __( 'Service details', 'startup-cpt-charts' ),
+		'title'         => __( 'Chart details', 'startup-cpt-charts' ),
 		'object_types'  => array( 'charts' )
 	) );
     
     $cmb_box->add_field( array(
-            'name'             => __( 'Icon', 'startup-cpt-charts' ),
-            'desc'             => __( 'The service icon', 'startup-cpt-charts' ),
-            'id'               => $prefix . 'icon',
+            'name'             => __( 'Type', 'startup-cpt-charts' ),
+            'id'               => $prefix . 'type',
             'type'             => 'select',
-            'show_option_none' => true,
-            'options'          => $font_awesome
+            'default'          => '',
+            'show_option_none' => false,
+            'options'          =>  array(
+                'pie'             => __( 'Pie', 'startup-cpt-charts' ),
+                'donut'             => __( 'Donut', 'startup-cpt-charts' ),
+                'bar'             => __( 'Bars', 'startup-cpt-charts' ),
+                )
     ) );
+    
+    $cmb_box->add_field( array(
+        'name'             => __( 'Bar graph height', 'startup-cpt-charts' ),
+        'desc'             => __( 'In px', 'startup-cpt-charts' ),
+        'id'               => $prefix . 'height',
+        'default'          => '140',
+        'type'             => 'text'
+    ) );
+    
+    $data = $cmb_box->add_field( array(
+		'id'          => $prefix . 'data',
+		'type'        => 'group',
+		'options'     => array(
+			'group_title'   => __( 'Data {#}', 'startup-cpt-charts' ), // {#} gets replaced by row number
+			'add_button'    => __( 'Add Another Data', 'startup-cpt-charts' ),
+			'remove_button' => __( 'Remove Data', 'startup-cpt-charts' ),
+			'sortable'      => true // beta
+			// 'closed'     => true, // true to have the groups closed by default
+		)
+	) );
+    
+    $cmb_box->add_group_field( $data, array(
+        'name'             => __( 'Name', 'startup-cpt-charts' ),
+        'id'               => 'name',
+        'type'             => 'text'
+    ) );
+    
+    $cmb_box->add_group_field( $data, array(
+        'name'             => __( 'Value', 'startup-cpt-charts' ),
+        'desc'             => __( 'In %. Forget the % symbol.', 'startup-cpt-charts' ),
+        'id'               => 'value',
+        'type'             => 'text'
+    ) );
+    
+//    $cmb_box->add_group_field( $data, array(
+//		'name'             => __( 'Highlight', 'startup-cpt-charts' ),
+//		'id'               => 'highlight',
+//		'type'             => 'checkbox'
+//	) );
 }
 
 add_action( 'cmb2_admin_init', 'startup_cpt_charts_meta' );
@@ -134,7 +176,7 @@ function startup_cpt_charts_shortcode( $atts ) {
 
 	// Attributes
     $atts = shortcode_atts(array(
-            'bg' => '#f0f0f0'
+            'bg' => ''
         ), $atts);
     
 	// Code
