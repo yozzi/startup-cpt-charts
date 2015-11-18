@@ -29,7 +29,7 @@ function startup_cpt_charts_updater() {
 	}
 }
 
-add_action( 'init', 'startup_cpt_charts_updater' );
+//add_action( 'init', 'startup_cpt_charts_updater' );
 
 //CPT
 function startup_cpt_charts() {
