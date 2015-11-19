@@ -198,9 +198,8 @@ add_shortcode( 'charts', 'startup_cpt_charts_shortcode' );
 // Enqueue scripts and styles.
 function startup_cpt_charts_scripts() {
     wp_enqueue_style( 'startup-cpt-charts-pizza', plugins_url( '/css/pizza.min.css', __FILE__ ), array( ), false, 'all' );
-    wp_enqueue_script( 'startup-cpt-charts-pizza', plugins_url( '/js/pizza.min.js', __FILE__ ), array( ), false, 'all' );
-    wp_enqueue_script( 'startup-cpt-charts-pizza-dependencies', plugins_url( '/js/dependencies.js', __FILE__ ), array( ), false, 'all' );
-    //wp_enqueue_script( 'startup-cpt-charts-modernizr', plugins_url( '/js/modernizr.js', __FILE__ ), array( ), false, 'all' );
+    wp_enqueue_script( 'startup-cpt-charts-pizza', plugins_url( '/js/pizza.min.js', __FILE__ ), array( ), '', false );
+    wp_enqueue_script( 'startup-cpt-charts-pizza-dependencies', plugins_url( '/js/dependencies.js', __FILE__ ), array( ), '', false );
 }
 
 add_action( 'wp_enqueue_scripts', 'startup_cpt_charts_scripts' );
