@@ -200,6 +200,48 @@ function startup_cpt_charts_shortcode( $atts ) {
 
 add_shortcode( 'charts', 'startup_cpt_charts_shortcode' );
 
+// Shortcode UI
+/**
+ * Detecion de Shortcake. Identique dans tous les plugins.
+ */
+if ( !function_exists( 'shortcode_ui_detection' ) ) {
+    function shortcode_ui_detection() {
+        if ( !function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
+            add_action( 'admin_notices', 'shortcode_ui_notice' );
+        }
+    }
+
+    function shortcode_ui_notice() {
+        if ( current_user_can( 'activate_plugins' ) ) {
+            echo '<div class="error message"><p>Shortcode UI plugin must be active to use fast shortcodes.</p></div>';
+        }
+    }
+
+add_action( 'init', 'shortcode_ui_detection' );
+}
+
+function startup_cpt_charts_shortcode_ui() {
+
+    shortcode_ui_register_for_shortcode(
+        'charts',
+        array(
+            'label' => esc_html__( 'Charts', 'startup-cpt-charts' ),
+            'listItemImage' => 'dashicons-chart-pie',
+            'attrs' => array(
+                array(
+                    'label' => 'Background',
+                    'attr'  => 'bg',
+                    'type'  => 'color',
+                ),
+            ),
+        )
+    );
+};
+
+if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
+    add_action( 'init', 'startup_cpt_charts_shortcode_ui');
+}
+
 // Enqueue scripts and styles.
 function startup_cpt_charts_scripts() {
     wp_enqueue_style( 'startup-cpt-charts-pizza', plugins_url( '/css/pizza.min.css', __FILE__ ), array( ), false, 'all' );
