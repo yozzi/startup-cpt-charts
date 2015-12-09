@@ -229,7 +229,7 @@ function startup_cpt_charts_shortcode_ui() {
             'listItemImage' => 'dashicons-chart-pie',
             'attrs' => array(
                 array(
-                    'label' => 'Background',
+                    'label' => esc_html__( 'Background', 'startup-cpt-charts' ),
                     'attr'  => 'bg',
                     'type'  => 'color',
                 ),
