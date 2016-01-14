@@ -1,0 +1,183 @@
+# Loco Gettext template
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: StartUp CPT Charts\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: Thu Jan 14 2016 09:15:17 GMT-0500 (Est)\n"
+"POT-Revision-Date: Thu Jan 14 2016 09:15:18 GMT-0500 (Est)\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#. Name of the plugin
+msgid "StartUp CPT Charts"
+msgstr ""
+
+#. Description of the plugin
+msgid "Le plugin pour activer le Custom Post Charts"
+msgstr ""
+
+#. Author of the plugin
+msgid "Yann Caplain"
+msgstr ""
+
+#: ../startup-cpt-charts.php:43
+msgctxt "Post Type General Name"
+msgid "Charts"
+msgstr ""
+
+#: ../startup-cpt-charts.php:44
+msgctxt "Post Type Singular Name"
+msgid "Chart"
+msgstr ""
+
+#: ../startup-cpt-charts.php:45 ../startup-cpt-charts.php:46 ../startup-cpt-
+#: charts.php:248
+msgid "Charts"
+msgstr ""
+
+#: ../startup-cpt-charts.php:47
+msgid "Parent Item:"
+msgstr ""
+
+#: ../startup-cpt-charts.php:48
+msgid "All Items"
+msgstr ""
+
+#: ../startup-cpt-charts.php:49
+msgid "Add New Item"
+msgstr ""
+
+#: ../startup-cpt-charts.php:50
+msgid "Add New"
+msgstr ""
+
+#: ../startup-cpt-charts.php:51
+msgid "New Item"
+msgstr ""
+
+#: ../startup-cpt-charts.php:52
+msgid "Edit Item"
+msgstr ""
+
+#: ../startup-cpt-charts.php:53
+msgid "Update Item"
+msgstr ""
+
+#: ../startup-cpt-charts.php:54
+msgid "View Item"
+msgstr ""
+
+#: ../startup-cpt-charts.php:55
+msgid "Search Item"
+msgstr ""
+
+#: ../startup-cpt-charts.php:56
+msgid "Not found"
+msgstr ""
+
+#: ../startup-cpt-charts.php:57
+msgid "Not found in Trash"
+msgstr ""
+
+#: ../startup-cpt-charts.php:60
+msgid "charts"
+msgstr ""
+
+#: ../startup-cpt-charts.php:126
+msgid "CMB2 plugin or StartUp Reloaded theme must be active to use custom metaboxes."
+msgstr ""
+
+#: ../startup-cpt-charts.php:140
+msgid "Chart details"
+msgstr ""
+
+#: ../startup-cpt-charts.php:145
+msgid "Type"
+msgstr ""
+
+#: ../startup-cpt-charts.php:151
+msgid "Pie"
+msgstr ""
+
+#: ../startup-cpt-charts.php:152
+msgid "Donut"
+msgstr ""
+
+#: ../startup-cpt-charts.php:153
+msgid "Bars"
+msgstr ""
+
+#: ../startup-cpt-charts.php:158
+msgid "Donut inner ratio"
+msgstr ""
+
+#: ../startup-cpt-charts.php:159
+msgid "Between 0 and 1, eg : 0.5"
+msgstr ""
+
+#: ../startup-cpt-charts.php:166
+msgid "Bar graph height"
+msgstr ""
+
+#: ../startup-cpt-charts.php:167
+msgid "In px"
+msgstr ""
+
+#: ../startup-cpt-charts.php:177
+msgid "Data {#}"
+msgstr ""
+
+#: ../startup-cpt-charts.php:178
+msgid "Add Another Data"
+msgstr ""
+
+#: ../startup-cpt-charts.php:179
+msgid "Remove Data"
+msgstr ""
+
+#: ../startup-cpt-charts.php:186
+msgid "Name"
+msgstr ""
+
+#: ../startup-cpt-charts.php:192
+msgid "Value"
+msgstr ""
+
+#: ../startup-cpt-charts.php:193
+#, php-format
+msgid "In %. Forget the % symbol."
+msgstr ""
+
+#: ../startup-cpt-charts.php:236
+msgid "Shortcake plugin must be active to use fast shortcodes."
+msgstr ""
+
+#: ../startup-cpt-charts.php:252
+msgid "Background"
+msgstr ""
+
+#: ../lib/updater.php:434
+msgid ""
+"The plugin has been updated, but could not be reactivated. Please reactivate "
+"it manually."
+msgstr ""
+
+#: ../lib/updater.php:435
+msgid "Plugin reactivated successfully."
+msgstr ""
