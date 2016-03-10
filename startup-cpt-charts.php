@@ -272,7 +272,7 @@ function startup_cpt_charts_scripts() {
     wp_enqueue_script( 'pizza-dependencies', plugins_url( '/js/dependencies.js', __FILE__ ), array( ), '', false );
 }
 
-add_action( 'wp_enqueue_scripts', 'startup_cpt_charts_scripts' );
+add_action( 'wp_enqueue_scripts', 'startup_cpt_charts_scripts', 15 );
 
 // Add code to footer
 function startup_cpt_charts_footer() { ?>
